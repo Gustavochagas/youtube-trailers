@@ -8,13 +8,15 @@ import LogoWhite from './../../assets/img/logo_dark.png';
 import Video from './../../components/video/index';
 
 class Trailers extends Component {
-  state = {
-      trailers: []
-  }
+    state = {
+        trailers: [],
+        limit: 6
+    }
 
     async componentDidMount() {
-        const response = await axios.get('https://www.googleapis.com/youtube/v3/playlistItems?playlistId=PL6t93nUFQQ1ZiXMfhPyhjb0PX3LgEVMcF&part=snippet,id&maxResults=9&key=AIzaSyC5inbK-lkQoRVcq6PAtssiB-CWFYwEQmo');
-
+        let totalItems = this.state.limit;
+        const response = await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?playlistId=PL6t93nUFQQ1ZiXMfhPyhjb0PX3LgEVMcF&part=snippet,id&maxResults=30&key=AIzaSyC5inbK-lkQoRVcq6PAtssiB-CWFYwEQmo`);
+        
         this.setState({trailers: response.data.items})
     }
 
@@ -23,8 +25,14 @@ class Trailers extends Component {
         this.props.history.push('/');
     }
 
-  render() {
-      console.log(this.state.trailers);
+    handleLoadMore = e => {
+        this.setState({
+            limit: this.state.limit + 6
+        })
+    }
+
+    render() {
+        console.log(this.state.trailers);
     return (
         <Fragment>
             <TrailersStyles />
@@ -39,9 +47,12 @@ class Trailers extends Component {
                     </div>
                 </div>
                 <div className="trailers__right">
-                    {this.state.trailers.map(item => (
+                    {this.state.trailers.slice(0, this.state.limit).map(item => (
                         <Video key={item.id} video={item}/>
                     ))}
+                    {this.state.limit <= 27 ? 
+                    <button className="btn__moreItems" onClick={this.handleLoadMore}>Load More</button>
+                    : null}      
                 </div>
             </div>
         </Fragment>

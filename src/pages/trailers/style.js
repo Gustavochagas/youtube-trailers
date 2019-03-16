@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import BackgroundLogin from './../../assets/img/background.png';
+import BackgroundLogin from './../../assets/img/background.jpg';
 
 const TrailersStyles = createGlobalStyle`
   .trailers-wrapper {
@@ -13,6 +13,7 @@ const TrailersStyles = createGlobalStyle`
     position: absolute;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row-reverse;
     padding: 50px;
 
     .overlay {
@@ -26,7 +27,8 @@ const TrailersStyles = createGlobalStyle`
     }
 
     .trailers__left {
-      position: relative;
+      position: fixed;
+      left: 20px;
       width: 30%;
       padding-right: 50px;
       z-index: 2;
@@ -93,6 +95,8 @@ const TrailersStyles = createGlobalStyle`
           left: 0;
           width: 100%;
           height: 100%;
+          user-drag: none; 
+          user-select: none;  
           transition: all .2s ease-in-out;
         }
 
@@ -108,6 +112,32 @@ const TrailersStyles = createGlobalStyle`
         }
       }
     }
+
+    .btn__moreItems {
+        display: block;
+        width: 100%;
+        max-width: 250px;
+        padding: 10px 15px;
+        margin: 10px auto;
+        background: transparent;
+        border: 1px solid #a99e7e;
+        color: #a99e7e;
+        text-align: center;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+         background: #a99e7e;
+         color: #fff; 
+        }
+      }
+    }
+  }
+
+  .ReactModal__Overlay--after-open {
+    z-index: 3;
+    background-color: rgba(0,0,0,0.75)!important;
   }
 `;
 

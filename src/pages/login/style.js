@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import BackgroundLogin from './../../assets/img/background.png';
+import BackgroundLogin from './../../assets/img/background.jpg';
 
 const LoginStyles = createGlobalStyle`
   .login-wrapper {
