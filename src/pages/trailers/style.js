@@ -139,6 +139,100 @@ const TrailersStyles = createGlobalStyle`
     z-index: 3;
     background-color: rgba(0,0,0,0.75)!important;
   }
+  .ReactModal__Content--after-open {
+    background-color: #000!important;
+    border: 2px solid #a99e7e!important;
+
+    iframe {
+      margin: 0 auto;
+      display: block;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      background: transparent;
+      border: 0;
+      font-size: 17px;
+      cursor: pointer;
+      transition: all .2s ease-in-out;
+
+      &:hover {
+        opacity: .7;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .trailers-wrapper {
+      .trailers__left {
+        width: 100%;
+        position: relative;
+        left: 0;
+
+        .trailers__btns {
+          margin-top: 0;
+          text-align: center;
+
+          .btn {
+            display: inline-block;
+            margin: 10px;
+          }
+        }
+      }
+      
+      .trailers__right {
+        width: 100%;
+      }
+    } 
+  }
+
+  @media only screen and (max-width: 768px) {
+    .trailers-wrapper {
+      .trailers__left {
+        .trailers__btns {
+          .btn {
+            max-width: 150px;
+          }
+        }
+      }
+    }
+
+    .ReactModal__Content--after-open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      iframe {
+        width: 500px;
+        height: 300px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .trailers-wrapper {
+      padding: 30px 15px;
+
+      .trailers__right {
+        .video__item {
+          width: 100%;
+        }
+      }
+
+      .trailers__left {
+        padding-right: 0;
+
+        .trailers__btns {
+          .btn {
+            max-width: 100px;
+          }
+        }
+      }
+    } 
+  }
 `;
 
 export default TrailersStyles;

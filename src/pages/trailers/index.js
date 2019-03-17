@@ -14,7 +14,6 @@ class Trailers extends Component {
     }
 
     async componentDidMount() {
-        let totalItems = this.state.limit;
         const response = await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?playlistId=PL6t93nUFQQ1ZiXMfhPyhjb0PX3LgEVMcF&part=snippet,id&maxResults=30&key=AIzaSyC5inbK-lkQoRVcq6PAtssiB-CWFYwEQmo`);
         
         this.setState({trailers: response.data.items})
@@ -32,7 +31,6 @@ class Trailers extends Component {
     }
 
     render() {
-        console.log(this.state.trailers);
     return (
         <Fragment>
             <TrailersStyles />

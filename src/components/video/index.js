@@ -33,15 +33,17 @@ class Video extends Component {
             <Modal 
                 isOpen={this.state.showModal}
                 contentLabel={video.snippet.title}
+                ariaHideApp={false}
             >
             <iframe 
+                title={video.snippet.title}
                 width="784" 
                 height="441" 
                 src={url_video}
                 frameBorder="0" 
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
             />
-            <button onClick={this.handleCloseModal}>Close Modal</button>
+            <button onClick={this.handleCloseModal} className="close-modal">Close</button>
             </Modal>
         </Fragment>
     );
